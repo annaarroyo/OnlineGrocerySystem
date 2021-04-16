@@ -23,7 +23,8 @@
   "homepage": "https://github.com/annaarroyo/OnlineGrocerySystem#readme",
   "dependencies": {
     "concurrently": "^6.0.2",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6"
   },
   "engines": {
     "node": "14.x"
