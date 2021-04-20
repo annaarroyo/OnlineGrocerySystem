@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b60c742-2a75-4cc1-a84c-bf3c04c4b93b" name="Default Changelist" comment="" />
+    <list default="true" id="8b60c742-2a75-4cc1-a84c-bf3c04c4b93b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/Pages/Home.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,5 +31,16 @@
       <updated>1618886614402</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
