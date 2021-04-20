@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
+import React, { Component } from 'react';
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Home } from "./components/Pages/Home";
 
 class App extends Component {
 state = {
@@ -26,13 +29,17 @@ state = {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.data}</p>
-      </div>
+      <>
+            <Router>
+              <NavBar />
+
+              <div className="pages">
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                </Switch>
+              </div>
+            </Router>
+          </>
     );
   }
 }
