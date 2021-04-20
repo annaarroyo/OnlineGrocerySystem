@@ -16,7 +16,7 @@ function Form ({ option }) {
 }
 
 export default function LogIn () {
-	const [option, setOption] = React.useState(1)
+	const [option, setOption] = useState(1)
 
 	return (
 		<div className='container'>
