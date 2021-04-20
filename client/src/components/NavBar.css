@@ -63,12 +63,12 @@
 
 .nav-item:hover:after {
   width: 100%;
-  background: #ffdd40;
+  background: #fff;
 }
 
 .nav-item .active {
-  color: #ffdd40;
-  border: 1px solid #ffdd40;
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .nav-icon {

@@ -57,7 +57,7 @@ function NavBar() {
                 className="nav-links"
                 onClick={handleClick}
               >
-              Profile
+              Login
               </NavLink>
             </li>
           </ul>
