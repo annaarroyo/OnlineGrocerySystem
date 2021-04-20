@@ -11,7 +11,7 @@ function NavBar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            CodeBucks
+            Grocery Delivery System
             <i className="fas fa-code"></i>
           </NavLink>
 
@@ -35,7 +35,7 @@ function NavBar() {
                 className="nav-links"
                 onClick={handleClick}
               >
-                About
+                Search
               </NavLink>
             </li>
             <li className="nav-item">
@@ -46,7 +46,7 @@ function NavBar() {
                 className="nav-links"
                 onClick={handleClick}
               >
-                Blog
+                Cart
               </NavLink>
             </li>
             <li className="nav-item">
@@ -57,7 +57,7 @@ function NavBar() {
                 className="nav-links"
                 onClick={handleClick}
               >
-                Contact Us
+              Profile
               </NavLink>
             </li>
           </ul>
