@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from "./components/Pages/Home";
-
+import  Login  from "./components/Pages/Login";
 class App extends Component {
 state = {
     data: null
@@ -22,7 +22,7 @@ state = {
     const body = await response.json();
 
     if (response.status !== 200) {
-      throw Error(body.message) 
+      throw Error(body.message)
     }
     return body;
   };
@@ -36,6 +36,7 @@ state = {
               <div className="pages">
                 <Switch>
                   <Route exact path="/" component={Home} />
+                  <Route exact path="/login"> <Login /> </Route>
                 </Switch>
               </div>
             </Router>
