@@ -46,11 +46,11 @@ body {
 	position: relative;
 	height: 25px;
 	width: 250px;
-	overflow: hidden;
+	overflow: visible;
 }
 .options {
 	display: flex;
-  font-size: 1.5rem;
+  	font-size: 1.5rem;
 	align-items: center;
 	width: 350px;
 }

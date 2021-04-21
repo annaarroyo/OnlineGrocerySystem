@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from "./components/Pages/Home";
-import  Login  from "./components/Pages/Login";
+import  Login  from "./components/Pages/login/Login";
 class App extends Component {
 state = {
     data: null

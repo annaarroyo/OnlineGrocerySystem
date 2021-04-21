@@ -1,45 +1,40 @@
 const {MongoClient} = require('mongodb');
+const { validationResult } = require('express-validator');
 const dbName = 'customers'
+const uri = "mongodb+srv://arroyo:arroyo@grocerydeliverysystem.hsobq.mongodb.net/GroceryDeliverySystem?retryWrites=true&w=majority";
+var db;
+var col;
 
-/* The command to run this file from the root folder is: node database/connect.js */
+MongoClient.connect( uri, { useUnifiedTopology: true }, { useNewUrlParser: true }, function( err, client ) {
+    console.log("Connected to MongoDB.")
+    db  = client.db(dbName);
+    col = client.db(dbName).collection('account'); // get the 'account' table from the 'customers' database 
+    if (err) throw err;
+  });
 
-async function main() {
+module.exports = {
+	checkLogin: (req, res) => {
+        console.log("Checking login credentials...");
 
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri = "mongodb+srv://arroyo:arroyo@grocerydeliverysystem.hsobq.mongodb.net/GroceryDeliverySystem?retryWrites=true&w=majority";
-
-    // create mongodb client from our uri
-    const client = new MongoClient(uri, { useUnifiedTopology: true });
-
-    try{
-
-        await client.connect(); // connect to our mongodb client
-        console.log("Connected to MongoDB!");
-        
-        const col = client.db(dbName).collection('account'); // get the 'account' table from the 'customers' database 
-
-        /* finds all the rows in the account table */
-        var getCustomerCollection = () => {
-            return new Promise((resolve, reject) => {
-                col.find({}).toArray(function(err, dbs) {
-                    err ? reject(err) : resolve(dbs);
-                });
-            });
-        };
-
-        var result = await (getCustomerCollection()); // store the queries after getCustomerColletion() is finished executing
-        console.log("Here are all the rows in the account table:"); 
-        console.log(JSON.stringify(result, null, 2));
-
-    } catch (e) {
-        console.error(e);
-    } 
-    finally {
-        await client.close();
-    }
-}
-
-module.exports = main().catch(console.error); // run our database connection
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).jsonp(errors.array().map(error => {
+                return { message: error.msg }
+            }));
+        }
+    
+        const user = req.params.user;
+        col.findOne({ email: user }).then((creds) => {
+            const response = creds;
+    
+            console.log(response);
+    
+            return res.status(200).send(JSON.stringify(response));
+        }).catch((error) => {
+            const response = { message: error.message };
+            console.error(response);
+            console.log(response);
+            return res.status(404).send(JSON.stringify(response));
+        })
+	}
+};
