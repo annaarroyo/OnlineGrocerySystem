@@ -6,10 +6,10 @@ var db;
 var col;
 
 MongoClient.connect( uri, { useUnifiedTopology: true }, { useNewUrlParser: true }, function( err, client ) {
-    console.log("Connected to MongoDB.")
+    if (err) throw err;
+    console.log("Connected to MongoDB.");
     db  = client.db(dbName);
     col = client.db(dbName).collection('account'); // get the 'account' table from the 'customers' database 
-    if (err) throw err;
   });
 
 module.exports = {
