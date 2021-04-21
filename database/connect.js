@@ -26,9 +26,7 @@ module.exports = {
         const user = req.params.user;
         col.findOne({ email: user }).then((creds) => {
             const response = creds;
-
             console.log(response);
-
             return res.status(200).send(JSON.stringify(response));
         }).catch((error) => {
             const response = { message: error.message };
@@ -36,37 +34,32 @@ module.exports = {
             console.log(response);
             return res.status(404).send(JSON.stringify(response));
         })
-	}
-};
-
-module.exports = {
-  saveAccount: (req, res) => {
-    console.log("Saving new credentials...");
-
-    const error = validationResult(req);
-    if(!errors.isEmpty()){
-      return res.status(400).jsonp(errors.array().map(error => {
-        return {message: error.msg}
-      }));
-    }
-    var info = req.body;
-    col.insertOne({
-      email: info.email,
-      password: info.password,
-      firstName: info.firstName,
-      lastName: info.lastName,
-      phoneNumber: info.phoneNumber
-    }).then((creds) => {
-      const response = creds;
-
-      console.log(response);
-
-      return res.status(200).send(JSON.stringify(response));
-  }).catch((error) => {
-      const response = { message: error.message };
-      console.error(response);
-      console.log(response);
-      return res.status(404).send(JSON.stringify(response));
-    })
-  }
+	},
+    saveAccount: (req, res) => {
+        console.log("Saving new credentials...");
+    
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+          return res.status(400).jsonp(errors.array().map(error => {
+            return {message: error.msg}
+          }));
+        }
+        var info = req.body;
+        col.insertOne({
+          email: info.email,
+          password: info.password,
+          firstName: info.firstName,
+          lastName: info.lastName,
+          phoneNumber: info.phoneNumber
+        }).then((postResponse) => {
+          const response = postResponse;
+          //console.log(response);
+          return res.status(200).send(JSON.stringify(response));
+      }).catch((error) => {
+          const response = { message: error.message };
+          console.error(response);
+          console.log(response);
+          return res.status(404).send(JSON.stringify(response));
+        })
+      }
 };

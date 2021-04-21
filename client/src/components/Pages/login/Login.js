@@ -12,9 +12,9 @@ class Login extends Component {
             redirect: false,
             email: '',
             password: '',
-						firstName: '',
-						lastName: '',
-						phoneNumber: '',
+			firstName: '',
+			lastName: '',
+			phoneNumber: '',
 			creds: {}
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -30,17 +30,21 @@ class Login extends Component {
 	 event.preventDefault();
 	 fetch('login/', {
 			method: 'POST',
-			body:[
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(
 				{
 					email: this.state.email,
 					password:this.state.password,
 					firstName: this.state.firstName,
 					lastName: this.state.lastName,
 					phoneNumber: this.state.phoneNumber
-				}]
-			}).then(res => res.json())
-				.then(body => console.log(body));
- }
+				})
+			})
+			.then(res => res.json())
+			.then(body => console.log(body));
+
+ };
+
 	async handleSubmit(event) {
 		event.preventDefault();
 
