@@ -12,9 +12,9 @@ class Login extends Component {
             redirect: false,
             email: '',
             password: '',
-			firstName: '',
-			lastName: '',
-			phoneNumber: '',
+						firstName: '',
+						lastName: '',
+						phoneNumber: '',
 			creds: {}
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -27,22 +27,38 @@ class Login extends Component {
 *
 */
  async handleSubmitSignUp(event){
-	 event.preventDefault();
-	 fetch('login/', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(
-				{
-					email: this.state.email,
-					password:this.state.password,
-					firstName: this.state.firstName,
-					lastName: this.state.lastName,
-					phoneNumber: this.state.phoneNumber
-				})
-			})
-			.then(res => res.json())
-			.then(body => console.log(body));
+	event.preventDefault();
 
+	if(this.state.email.trim() === '' || this.state.password.trim() === '' || this.state.firstName.trim() === '' || this.state.lastName.trim() === '' || this.state.phoneNumber.trim() === '' ){
+		alert("Please make sure all the fields are filled.")
+	}
+	else {
+		//fetch API to get user credential
+		 await fetch('login/' + this.state.email)
+			.then(res => res.json())
+			.then(creds => this.setState({creds}));
+			//if the email is not in the databse or wrong password
+		if (this.state.creds !== null) {
+			alert("Email is already used.")
+		}
+		else{
+			await fetch('login/', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(
+						{
+							email: this.state.email,
+							password:this.state.password,
+							firstName: this.state.firstName,
+							lastName: this.state.lastName,
+							phoneNumber: this.state.phoneNumber
+						})
+					})
+					.then(res => res.json())
+					.then(body => console.log(body));
+					this.setState({redirect: true});
+		}
+	}
  };
 
 	async handleSubmit(event) {
@@ -54,7 +70,7 @@ class Login extends Component {
 		}
 		else {
 			//fetch API to get user credential
-			fetch('login/' + this.state.email)
+			 await fetch('login/' + this.state.email)
 				.then(res => res.json())
 				.then(creds => this.setState({creds}));
 				//if the email is not in the databse or wrong password
@@ -106,6 +122,7 @@ class Login extends Component {
 					<input id='password' name='password' type='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
 					<input id='phoneNumber' name='phoneNumber' type='text' placeholder='Phone Number' value={this.state.phoneNumber} onChange={this.handleChange} required/>
 				</div>
+				{this.renderRedirect()}
 				<button className='btn-submit-form' type='submit' onClick={ e => this.handleSubmitSignUp(e) }>
 					Sign up
 				</button>
