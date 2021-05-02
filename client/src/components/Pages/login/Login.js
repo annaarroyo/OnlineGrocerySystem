@@ -8,7 +8,6 @@ class Login extends Component {
         super();
 		this.option = 1;
         this.state = {
-						option: 1,
             redirect: false,
             email: '',
             password: '',
@@ -26,24 +25,24 @@ class Login extends Component {
 * If user chooses to sign up => check to see if the credentials is existed, and save all the information to db
 *
 */
- async handleSubmitSignUp(event){
-	 event.preventDefault();
-	 fetch('login/', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(
-				{
-					email: this.state.email,
-					password:this.state.password,
-					firstName: this.state.firstName,
-					lastName: this.state.lastName,
-					phoneNumber: this.state.phoneNumber
+	async handleSubmitSignUp(event){
+		event.preventDefault();
+		await fetch('login/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(
+					{
+						email: this.state.email,
+						password:this.state.password,
+						firstName: this.state.firstName,
+						lastName: this.state.lastName,
+						phoneNumber: this.state.phoneNumber
+					})
 				})
-			})
-			.then(res => res.json())
-			.then(body => console.log(body));
+				.then(res => res.json())
+				.then(body => console.log(body));
 
- };
+ 	};
 
 	async handleSubmit(event) {
 		event.preventDefault();
@@ -54,22 +53,18 @@ class Login extends Component {
 		}
 		else {
 			//fetch API to get user credential
-			fetch('login/' + this.state.email)
+			await fetch('login/' + this.state.email)
 				.then(res => res.json())
 				.then(creds => this.setState({creds}));
 				//if the email is not in the database or wrong password
-			if (this.state.creds === null) {
+			if ((this.state.creds === null) || (this.state.password !== this.state.creds.password)) {
 				alert("No account under this email.");
 			}
-			else if (this.state.password !== this.state.creds.password){
-				alert("Bad password. Please try again. " + this.state.password + " " + this.state.creds);
-			}
-				//all the credential information is right, redirect to the homepage
-			else {
+			else { //all the credential information is right, redirect to the homepage
 				this.setState({redirect: true});
 			}
 		}
-};
+	};
 
 	handleChange = ({ target }) => {
         this.setState({ [target.name]: target.value });

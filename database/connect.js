@@ -26,13 +26,13 @@ module.exports = {
         const user = req.params.user;
         col.findOne({ email: user }).then((creds) => {
             const response = creds;
-            console.log(response);
-            return res.status(200).send(response);
+            //console.log("Response from GET /login/:user: ");
+            //console.log(JSON.stringify(response));
+            return res.status(200).send(JSON.stringify(response));
         }).catch((error) => {
             const response = { message: error.message };
             console.error(response);
-            console.log(response);
-            return res.status(404).send(response);
+            return res.status(404).send(JSON.stringify(response));
         })
 	},
     saveAccount: (req, res) => {
