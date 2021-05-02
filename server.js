@@ -4,6 +4,8 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(express.json());
+
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 const loginRouter = require('./routes/loginRouter');
@@ -21,5 +23,5 @@ app.get('*', (req, res) => {
 app.listen(port, (req, res) => {  
   dbConnection;
   console.log( `Server listening on port: ${port}`);
-})
+});
 
