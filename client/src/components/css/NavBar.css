@@ -2,12 +2,13 @@
   background-color: #2699FB;
   height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
   position: sticky;
   top: 0;
   z-index: 20;
+  padding: 0 50px;
 }
 
 .nav-container {
@@ -29,10 +30,27 @@
   flex-grow: 1;
 }
 
+.nav-delivery {
+  color: #ffffff;
+  align-items: center;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
 .nav-menu {
   display: flex;
   list-style: none;
   text-align: center;
+  margin-right: 2rem;
+}
+
+.nav-menu-cart {
+  display: flex;
+  list-style: none;
+  text-align: right;
   margin-right: 2rem;
 }
 
