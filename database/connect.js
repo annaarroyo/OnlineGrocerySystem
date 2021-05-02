@@ -27,12 +27,12 @@ module.exports = {
         col.findOne({ email: user }).then((creds) => {
             const response = creds;
             console.log(response);
-            return res.status(200).send(JSON.stringify(response));
+            return res.status(200).send(response);
         }).catch((error) => {
             const response = { message: error.message };
             console.error(response);
             console.log(response);
-            return res.status(404).send(JSON.stringify(response));
+            return res.status(404).send(response);
         })
 	},
     saveAccount: (req, res) => {
@@ -54,12 +54,12 @@ module.exports = {
         }).then((postResponse) => {
           const response = postResponse;
           //console.log(response);
-          return res.status(200).send(JSON.stringify(response));
+          return res.status(200).send(response);
       }).catch((error) => {
           const response = { message: error.message };
           console.error(response);
           console.log(response);
-          return res.status(404).send(JSON.stringify(response));
+          return res.status(404).send(response);
         })
       }
 };

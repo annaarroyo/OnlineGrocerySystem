@@ -57,9 +57,12 @@ class Login extends Component {
 			fetch('login/' + this.state.email)
 				.then(res => res.json())
 				.then(creds => this.setState({creds}));
-				//if the email is not in the databse or wrong password
-			if (this.state.creds === null || this.state.password !== this.state.creds.password) {
-				alert("Bad username or password. Please try again.");
+				//if the email is not in the database or wrong password
+			if (this.state.creds === null) {
+				alert("No account under this email.");
+			}
+			else if (this.state.password !== this.state.creds.password){
+				alert("Bad password. Please try again. " + this.state.password + " " + this.state.creds);
 			}
 				//all the credential information is right, redirect to the homepage
 			else {
@@ -83,7 +86,7 @@ class Login extends Component {
 			<form className='account-form' onSubmit={(evt) => evt.preventDefault()}>
 				<div className={'account-form-fields ' + (this.state.option === 1 ? 'sign-in' :  'sign-up') }>
 					<input id='email' name='email' type='email' placeholder='E-mail' value={this.state.email} onChange={this.handleChange} required />
-					<input id='password' name='password' type='text' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
+					<input id='password' name='password' type='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
 				</div>
 				{this.renderRedirect()}
 				<button
