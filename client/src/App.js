@@ -1,10 +1,11 @@
-import './App.css';
+import './components/css/Main.css';
 import React, { Component } from 'react';
-import NavBar from "./components/pages/NavBar";
+import NavBar from "./components/Pages/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/pages/Home";
-import Login from "./components/pages/Login";
-import Shop from "./components/pages/Shop";
+import Home from "./components/Pages/Home";
+import Login from "./components/Pages/Login";
+import Shop from "./components/Pages/Shop";
+import Profile from "./components/Pages/Profile";
 class App extends Component {
 state = {
     data: null
@@ -38,6 +39,7 @@ state = {
                   <Route exact path="/"> <Home /> </Route>
                   <Route exact path="/login"> <Login /> </Route>
                   <Route exact path="/search"> <Shop /> </Route>
+                  <Route exact path="/profile"> <Profile /> </Route>
                 </Switch>
               </div>
             </Router>

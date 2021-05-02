@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import CartImg from '../resources/shopping-cart-solid.svg';
-import '../css/NavBar.css';
+import '../css/Main.css';
 
 // cody i commented this part out to ignore the errors from ./image -anna
 /*const data = {
