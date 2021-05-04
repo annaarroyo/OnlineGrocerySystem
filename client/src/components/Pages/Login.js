@@ -25,7 +25,6 @@ class Login extends Component {
 * If user chooses to sign up => check to see if the credentials is existed, and save all the information to db
 *
 */
-<<<<<<< HEAD:client/src/components/Pages/login/Login.js
  async handleSubmitSignUp(event){
 	event.preventDefault();
 
@@ -60,26 +59,6 @@ class Login extends Component {
 		}
 	}
  };
-=======
-	async handleSubmitSignUp(event){
-		event.preventDefault();
-		await fetch('login/', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(
-					{
-						email: this.state.email,
-						password:this.state.password,
-						firstName: this.state.firstName,
-						lastName: this.state.lastName,
-						phoneNumber: this.state.phoneNumber
-					})
-				})
-				.then(res => res.json())
-				.then(body => console.log(body));
-
- 	};
->>>>>>> a1511c8c1fcc93d8965e58332975126ceb70f12e:client/src/components/Pages/Login.js
 
 	async handleSubmit(event) {
 		event.preventDefault();
@@ -90,11 +69,7 @@ class Login extends Component {
 		}
 		else {
 			//fetch API to get user credential
-<<<<<<< HEAD:client/src/components/Pages/login/Login.js
 			 await fetch('login/' + this.state.email)
-=======
-			await fetch('login/' + this.state.email)
->>>>>>> a1511c8c1fcc93d8965e58332975126ceb70f12e:client/src/components/Pages/Login.js
 				.then(res => res.json())
 				.then(creds => this.setState({creds}));
 				//if the email is not in the database or wrong password
