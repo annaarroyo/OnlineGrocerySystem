@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Redirect } from 'react-router-dom';
-import "./Login.css"
+import '../css/Main.css';
 
 class Login extends Component {
 
@@ -8,7 +8,6 @@ class Login extends Component {
         super();
 		this.option = 1;
         this.state = {
-						option: 1,
             redirect: false,
             email: '',
             password: '',
@@ -26,6 +25,7 @@ class Login extends Component {
 * If user chooses to sign up => check to see if the credentials is existed, and save all the information to db
 *
 */
+<<<<<<< HEAD:client/src/components/Pages/login/Login.js
  async handleSubmitSignUp(event){
 	event.preventDefault();
 
@@ -60,6 +60,26 @@ class Login extends Component {
 		}
 	}
  };
+=======
+	async handleSubmitSignUp(event){
+		event.preventDefault();
+		await fetch('login/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(
+					{
+						email: this.state.email,
+						password:this.state.password,
+						firstName: this.state.firstName,
+						lastName: this.state.lastName,
+						phoneNumber: this.state.phoneNumber
+					})
+				})
+				.then(res => res.json())
+				.then(body => console.log(body));
+
+ 	};
+>>>>>>> a1511c8c1fcc93d8965e58332975126ceb70f12e:client/src/components/Pages/Login.js
 
 	async handleSubmit(event) {
 		event.preventDefault();
@@ -70,19 +90,22 @@ class Login extends Component {
 		}
 		else {
 			//fetch API to get user credential
+<<<<<<< HEAD:client/src/components/Pages/login/Login.js
 			 await fetch('login/' + this.state.email)
+=======
+			await fetch('login/' + this.state.email)
+>>>>>>> a1511c8c1fcc93d8965e58332975126ceb70f12e:client/src/components/Pages/Login.js
 				.then(res => res.json())
 				.then(creds => this.setState({creds}));
-				//if the email is not in the databse or wrong password
-			if (this.state.creds === null || this.state.password !== this.state.creds.password) {
-				alert("Bad username or password. Please try again.");
+				//if the email is not in the database or wrong password
+			if ((this.state.creds === null) || (this.state.password !== this.state.creds.password)) {
+				alert("No account under this email.");
 			}
-				//all the credential information is right, redirect to the homepage
-			else {
+			else { //all the credential information is right, redirect to the homepage
 				this.setState({redirect: true});
 			}
 		}
-};
+	};
 
 	handleChange = ({ target }) => {
         this.setState({ [target.name]: target.value });
@@ -99,7 +122,7 @@ class Login extends Component {
 			<form className='account-form' onSubmit={(evt) => evt.preventDefault()}>
 				<div className={'account-form-fields ' + (this.state.option === 1 ? 'sign-in' :  'sign-up') }>
 					<input id='email' name='email' type='email' placeholder='E-mail' value={this.state.email} onChange={this.handleChange} required />
-					<input id='password' name='password' type='text' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
+					<input id='password' name='password' type='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
 				</div>
 				{this.renderRedirect()}
 				<button

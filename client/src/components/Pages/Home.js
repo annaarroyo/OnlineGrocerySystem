@@ -2,11 +2,12 @@ import React from "react";
 
 export const Home = () => {
   return (
-    <div>
-      <h3>Welcome!</h3>
-      <p>Welcome to the Grocery Delivery System!</p>
-      <p>Click the Search Button in the upper right hand corner</p>
-      <p>to begin adding items to your cart.</p>
+    <div id="home">
+      <h2>Hello!</h2>
+      <h4>Welcome to Grocery-Delivery.me!</h4>
+      <h5>Click the Search Button in the upper right hand corner to begin adding items to your cart.</h5>
     </div>
   );
 };
+
+export default Home;
