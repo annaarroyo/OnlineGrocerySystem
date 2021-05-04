@@ -11,9 +11,9 @@ class Login extends Component {
             redirect: false,
             email: '',
             password: '',
-			firstName: '',
-			lastName: '',
-			phoneNumber: '',
+						firstName: '',
+						lastName: '',
+						phoneNumber: '',
 			creds: {}
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -25,6 +25,42 @@ class Login extends Component {
 * If user chooses to sign up => check to see if the credentials is existed, and save all the information to db
 *
 */
+<<<<<<< HEAD:client/src/components/Pages/login/Login.js
+ async handleSubmitSignUp(event){
+	event.preventDefault();
+
+	if(this.state.email.trim() === '' || this.state.password.trim() === '' || this.state.firstName.trim() === '' || this.state.lastName.trim() === '' || this.state.phoneNumber.trim() === '' ){
+		alert("Please make sure all the fields are filled.")
+	}
+	else {
+		//fetch API to get user credential
+		 await fetch('login/' + this.state.email)
+			.then(res => res.json())
+			.then(creds => this.setState({creds}));
+			//if the email is not in the databse or wrong password
+		if (this.state.creds !== null) {
+			alert("Email is already used.")
+		}
+		else{
+			await fetch('login/', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(
+						{
+							email: this.state.email,
+							password:this.state.password,
+							firstName: this.state.firstName,
+							lastName: this.state.lastName,
+							phoneNumber: this.state.phoneNumber
+						})
+					})
+					.then(res => res.json())
+					.then(body => console.log(body));
+					this.setState({redirect: true});
+		}
+	}
+ };
+=======
 	async handleSubmitSignUp(event){
 		event.preventDefault();
 		await fetch('login/', {
@@ -43,6 +79,7 @@ class Login extends Component {
 				.then(body => console.log(body));
 
  	};
+>>>>>>> a1511c8c1fcc93d8965e58332975126ceb70f12e:client/src/components/Pages/Login.js
 
 	async handleSubmit(event) {
 		event.preventDefault();
@@ -53,7 +90,11 @@ class Login extends Component {
 		}
 		else {
 			//fetch API to get user credential
+<<<<<<< HEAD:client/src/components/Pages/login/Login.js
+			 await fetch('login/' + this.state.email)
+=======
 			await fetch('login/' + this.state.email)
+>>>>>>> a1511c8c1fcc93d8965e58332975126ceb70f12e:client/src/components/Pages/Login.js
 				.then(res => res.json())
 				.then(creds => this.setState({creds}));
 				//if the email is not in the database or wrong password
@@ -104,6 +145,7 @@ class Login extends Component {
 					<input id='password' name='password' type='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
 					<input id='phoneNumber' name='phoneNumber' type='text' placeholder='Phone Number' value={this.state.phoneNumber} onChange={this.handleChange} required/>
 				</div>
+				{this.renderRedirect()}
 				<button className='btn-submit-form' type='submit' onClick={ e => this.handleSubmitSignUp(e) }>
 					Sign up
 				</button>
