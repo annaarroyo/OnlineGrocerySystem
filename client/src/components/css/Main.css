@@ -154,7 +154,7 @@ h6{
 .container {
 	text-align: center;
 	color: #000;
-	margin-top: 100px;
+  margin: 100px auto 0 auto;
 }
 
 .container > header {
@@ -300,6 +300,24 @@ h6{
 
 
 /* -------------------------- Profile -------------------------- */
+.profile table {
+  max-width: 1500px;
+  width: 90%;
+  margin: 0 auto;
+}
+.profile table h5{
+  /* font-size: 2rem; */
+  text-decoration: underline;
+}
+.profile table{
+  margin: 3% auto;
+}
+.profile table td.left, .profile table td.right{
+  border: solid 1px grey;
+  /* background: #f3faff; */
+  padding: 10% 5%;
+  width: 48.5%;
+}
 
 
 /* ------------------------- Responsive ------------------------ */
@@ -346,8 +364,23 @@ h6{
     }
   }
 
-  
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 768px) {
+  .profile .container{
+    width: 100%;
+  }
+  .profile table, .profile table tr,   .profile table td,   .profile table th {
+    display: table;
+    margin: 0 !important;
+    width:100% !important;
+    border: none !important;
+  }
+  .profile table td.left, .profile table td.right {
+    padding: 5% 0 !important;
+    /* border-bottom: 1px solid grey !important; */
+  }
+}  
+
+  @media screen and (max-width: 380px) {
 	.options {
 		width: 100%;
 	}
