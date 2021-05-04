@@ -120,10 +120,27 @@ import '../css/Main.css';
   };*/
 
 class Shop extends Component {
+  constructor(){
+    super();
+  this.state = {
+    name: '',
+    catagory: '',
+    cost: '',
+    images:'',
+    items: []
+  }
+}
+
+async getProductData(){
+    fetch('/product')
+      .then(res => res.json())
+      .then(data => this.setState({items: data}));
+  }
+
     render () {
 		return (
             <nav className = "navbar">
-                <div className="nav-container"> 
+                <div className="nav-container">
                 <i className="nav-delivery">
                     <label for="delivery-time">Choose a delivery time:</label>
                     <select name="delivery-time" id="delivery-time">
