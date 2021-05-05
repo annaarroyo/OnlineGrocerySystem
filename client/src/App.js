@@ -52,7 +52,6 @@ class App extends Component {
                   <Route exact path="/profile"> <Profile /> </Route>
                   <Route exact path="/cart"> <Cart /> </Route>
                 </Switch>
-
               </div>
             </Router>
       </>
