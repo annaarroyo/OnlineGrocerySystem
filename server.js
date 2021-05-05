@@ -9,9 +9,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 const loginRouter = require('./routes/loginRouter');
-const productRouter = requre('./routes/productRouter');
+const productRouter = require('./routes/productRouter');
 app.use('/login', loginRouter);
-app.use('/product', productRouter);
+app.use('/search', productRouter);
 
 app.get('/express_backend', (req, res) => {
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });

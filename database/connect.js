@@ -74,7 +74,8 @@ module.exports = {
           return {message: error.msg}
         }));
       }
-
-
+    var data =[]
+    data = productCol.find({});
+    return res.status(200).send(data);
     }
 };
