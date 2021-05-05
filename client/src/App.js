@@ -6,6 +6,8 @@ import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 import Shop from "./components/Pages/Shop";
 import Profile from "./components/Pages/Profile";
+import {DataProvider} from './components/Context'
+
 class App extends Component {
 state = {
     data: null
@@ -31,6 +33,7 @@ state = {
   render() {
     return (
       <>
+        <DataProvider>
             <Router>
               <NavBar />
 
@@ -43,6 +46,7 @@ state = {
                 </Switch>
               </div>
             </Router>
+        </DataProvider>
           </>
     );
   }
