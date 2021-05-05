@@ -6,10 +6,19 @@ import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 import Shop from "./components/Pages/Shop";
 import Profile from "./components/Pages/Profile";
+import Cart from "./components/Pages/Cart";
+
 class App extends Component {
-state = {
+  state = {
     data: null
   };
+
+  constructor(props) {
+    super(props)
+        this.state = {
+            cart: []
+        }
+  }
 
   componentDidMount() {
       // Call our fetch function below once the component mounts
@@ -31,6 +40,7 @@ state = {
   render() {
     return (
       <>
+
             <Router>
               <NavBar />
 
@@ -40,10 +50,12 @@ state = {
                   <Route exact path="/login"> <Login /> </Route>
                   <Route exact path="/search"> <Shop /> </Route>
                   <Route exact path="/profile"> <Profile /> </Route>
+                  <Route exact path="/cart"> <Cart /> </Route>
                 </Switch>
+
               </div>
             </Router>
-          </>
+      </>
     );
   }
 }
