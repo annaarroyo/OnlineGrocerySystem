@@ -3,10 +3,27 @@ import CartImg from '../resources/shopping-cart-solid.svg';
 import '../css/Main.css';
 import {Link} from 'react-router-dom'
 import {DataContext} from '../Context'
+//<p>{product.description}</p> 60
 
 export class Shop extends Component {
 
     static contextType = DataContext;
+
+    /*constructor(props) {
+        super();
+        this.state = {
+          loading: 'true'
+        };
+    
+      }
+
+    componentDidMount = async() => {
+        console.log("hello from did mount");
+        const res = await this.context.setProducts();
+        this.setState({loading: 'done'});
+        console.log("goodbye from did mount");
+
+    };*/
 
     render() {
         const {products, addCart} = this.context;
@@ -52,7 +69,7 @@ export class Shop extends Component {
                                             {product.title}
                                         </h5>
                                         <span>${product.price}</span>
-                                        <p>{product.description}</p>
+                                        
                                         <button onClick={()=> addCart(product._id)}>Add to cart</button>
                                     </div>
                                 </div>
@@ -65,4 +82,4 @@ export class Shop extends Component {
     }
 }
 
-export default Shop
+export default Shop;

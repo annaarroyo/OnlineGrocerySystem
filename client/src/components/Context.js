@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 export const DataContext = React.createContext();
 
 export class DataProvider extends Component {
@@ -112,6 +111,60 @@ export class DataProvider extends Component {
 
     };
 
+    componentDidUpdate(){
+        localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
+        localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
+    };
+
+    componentDidMount(){
+
+        this.setState({
+            cart: []
+        });
+        
+        this.setState({
+            total: 0 
+        });
+        /*const dataCart = JSON.parse(localStorage.getItem('dataCart'));
+        if(dataCart !== null){
+            this.setState({cart: dataCart});
+        }
+        const dataTotal = JSON.parse(localStorage.getItem('dataTotal'));
+        if(dataTotal !== null){
+            this.setState({total: dataTotal});
+        }*/
+    };
+
+    /*setProducts = () => {
+        console.log("hello from set products");
+        
+        
+        this.callBackendAPI()
+            .then(res => {
+                var result = [];
+                for(var i in res.json){
+                    result.push([i, res.json [i]]);
+                }
+                this.setState({ products: result });}
+                )
+            
+            .catch(err => console.log(err));  
+        
+        console.log("goodbye from set products");
+    };
+
+    callBackendAPI = async () => {
+        console.log("hello from callback");
+        const response = await fetch('/products');
+        const body = await response.json();
+    
+        if (response.status !== 200) {
+          throw Error(body.message)
+        }
+        console.log(body);
+        return body;
+    };*/
+
     addCart = (id) =>{
         const {products, cart} = this.state;
         const check = cart.every(item =>{
@@ -171,31 +224,17 @@ export class DataProvider extends Component {
         this.setState({total: res})
     };
 
-    componentDidUpdate(){
-        localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
-        localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
-    };
-
-    componentDidMount(){
-        const dataCart = JSON.parse(localStorage.getItem('dataCart'));
-        if(dataCart !== null){
-            this.setState({cart: dataCart});
-        }
-        const dataTotal = JSON.parse(localStorage.getItem('dataTotal'));
-        if(dataTotal !== null){
-            this.setState({total: dataTotal});
-        }
-    }
-
-
     render() {
-        const {products, cart,total} = this.state;
-        const {addCart,reduction,increase,removeProduct,getTotal} = this;
+        const {products, cart, total} = this.state;
+        const {addCart,reduction,increase,removeProduct,getTotal, setProducts} = this;
         return (
+
             <DataContext.Provider
-                value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal}}>
+                value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal, setProducts}}>
                 {this.props.children}
             </DataContext.Provider>
+            
         )
-    }
+    };
 }
+
