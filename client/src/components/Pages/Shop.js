@@ -34,16 +34,19 @@ export class Shop extends Component {
                 <div>
                     <div id="product">
                         {
-                            products.map(product => (
+                            products.map(product =>(
                                 <div className="card" key={product._id}>
                                     <Link to={`/product/${product._id}`}>
                                         <img src={product.src} alt=""/>
                                     </Link>
-                                            <Link to={`/product/${product._id}`}>{product.title}</Link>
+                                    <div className="content">
+                                        <h5>
+                                            {product.title}
+                                        </h5>
                                         <span>${product.price}</span>
                                         <p>{product.description}</p>
-                                        <button onClick={() => addCart(product._id)}>Add to cart</button>
-                           
+                                        <button onClick={()=> addCart(product._id)}>Add to cart</button>
+                                    </div>
                                 </div>
                             ))
                         }

@@ -39,7 +39,7 @@ state = {
 
               <div className="pages">
                 <Switch>
-                  <Route exact path="/"> <Home /> </Route>
+                  <Route exact path="/"> <Home/> </Route>
                   <Route exact path="/login"> <Login /> </Route>
                   <Route exact path="/search"> <Shop /> </Route>
                   <Route exact path="/profile"> <Profile /> </Route>

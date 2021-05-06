@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b60c742-2a75-4cc1-a84c-bf3c04c4b93b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Context.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/resources/bars-solid.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/resources/times-solid.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Pages/Shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Pages/Shop.js" afterDir="false" />
@@ -53,7 +50,7 @@
       <recent name="C:\Users\gillc\Source\Repos\OnlineGrocerySystem\client\src\components" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.client">
     <configuration name="client" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
