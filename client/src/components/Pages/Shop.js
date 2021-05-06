@@ -18,8 +18,16 @@ export class Shop extends Component {
                             <i className="nav-delivery">
                                 <label htmlFor="delivery-time">Choose a delivery time:</label>
                                 <select name="delivery-time" id="delivery-time">
-                                    <option value="Friday">Friday at 1:00 PM</option>
+                                    <option value="Friday">Monday at 1:00 PM</option>
+                                    <option value="Friday">Monday at 2:00 PM</option>
+                                    <option value="Friday">Tuesday at 12:00 PM</option>
+                                    <option value="Friday">Wednesday at 2:20 PM</option>
+                                    <option value="Friday">Thursday at 6:00 PM</option>
+                                    <option value="Friday">Friday at 10:00 AM</option>
                                     <option value="Friday">Friday at 2:00 PM</option>
+                                    <option value="Friday">Saturday at 6:00 PM</option>
+                                    <option value="Friday">Saturday at 6:40 PM</option>
+                                    <option value="Friday">Sunday at 2:00 PM</option>
                                 </select>
                             </i>
                             <ul className="nav-menu">

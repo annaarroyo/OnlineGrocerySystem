@@ -13,7 +13,7 @@ export class Cart extends Component {
     render() {
         const {cart,increase,reduction,removeProduct,total} = this.context;
         if(cart.length === 0){
-            return <h2 style={{textAlign:"center"}}>Nothings Product</h2>
+            return <h2 style={{textAlign:"center"}}>Cart is empty</h2>
         }else{
             return (
                 <>
