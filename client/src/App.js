@@ -8,6 +8,7 @@ import Shop from "./components/Pages/Shop";
 import Profile from "./components/Pages/Profile";
 import Cart from "./components/Pages/Cart";
 
+
 class App extends Component {
   state = {
     data: null

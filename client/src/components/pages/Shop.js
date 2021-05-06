@@ -127,15 +127,15 @@ class Shop extends Component {
   }
 }
 
-async componentDidMount(){
-  await fetch('/search')
-    .then(items => this.setState({items}))
-    .then(console.log(this.state.items))
-}
+// async componentDidMount(){
+//   await fetch('/search')
+//     .then(items => this.setState({items}))
+//     .then(console.log(this.state.items))
+// }
     render () {
 		return (
 
-    
+
             <nav className = "navbar">
                 <div className="nav-container">
                 <i className="nav-delivery">
