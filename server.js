@@ -13,6 +13,9 @@ const productRouter = require('./routes/productRouter');
 app.use('/login', loginRouter);
 app.use('/search', productRouter);
 
+const productRouter = require('./routes/productRouter');
+app.use('/products', productRouter);
+
 app.get('/express_backend', (req, res) => {
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
 });

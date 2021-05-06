@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import CartImg from '../resources/shopping-cart-solid.svg';
 import '../css/Main.css';
 import {Link} from 'react-router-dom'
@@ -6,33 +6,12 @@ import {DataContext} from '../Context'
 
 export class Shop extends Component {
 
-class Shop extends Component {
-  constructor(){
-    super();
-  this.state = {
-    items: []
-  }
-}
+    static contextType = DataContext;
 
-    render () {
-		return (
+    render() {
 
-
-            <nav className = "navbar">
-                <div className="nav-container">
-                <i className="nav-delivery">
-                    <label for="delivery-time">Choose a delivery time:</label>
-                    <select name="delivery-time" id="delivery-time">
-                        <option value="Friday">Friday at 1:00 PM</option>
-                        <option value="Friday">Friday at 2:00 PM</option>
-                    </select>
-                </i>
-                    <ul className="nav-menu">
-                        <li className="nav-item">
-                            <span>0</span>
-                            <img src={CartImg} alt="" width="20" ></img>
-                        </li>
-                    </ul>
+        const {products, addCart} = this.context;
+        return (
             <>
                 <div>
                     <nav className="navbar">
@@ -87,4 +66,4 @@ class Shop extends Component {
     }
 }
 
-export default Shop
+export default Shop;
