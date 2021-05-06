@@ -11,9 +11,9 @@ class Login extends Component {
             redirect: false,
             email: '',
             password: '',
-						firstName: '',
-						lastName: '',
-						phoneNumber: '',
+			firstName: '',
+			lastName: '',
+			phoneNumber: '',
 			creds: {}
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -88,7 +88,7 @@ class Login extends Component {
 
 	renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to='/'/>
+          return <Redirect to='/profile'/>
         }
     };
 
