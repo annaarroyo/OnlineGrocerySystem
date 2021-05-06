@@ -6,6 +6,7 @@ import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 import Shop from "./components/Pages/Shop";
 import Profile from "./components/Pages/Profile";
+import Cart from "./components/Pages/Cart"
 import {DataProvider} from './components/Context'
 
 class App extends Component {
@@ -43,6 +44,7 @@ state = {
                   <Route exact path="/login"> <Login /> </Route>
                   <Route exact path="/search"> <Shop /> </Route>
                   <Route exact path="/profile"> <Profile /> </Route>
+                  <Route exact path="/cart"> <Cart /> </Route>
                 </Switch>
               </div>
             </Router>
