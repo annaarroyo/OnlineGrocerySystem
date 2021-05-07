@@ -338,7 +338,7 @@ section{
       opacity: 1;
       transition: all 0.5s ease;
     }
-  
+
     .nav-menu.active {
       background: #2699FB;
       left: 0px;
@@ -355,7 +355,7 @@ section{
       width: 100%;
       display: table;
     }
-  
+
     .nav-icon {
       display: block;
       position: absolute;
@@ -382,7 +382,7 @@ section{
     padding: 5% 0 !important;
     /* border-bottom: 1px solid grey !important; */
   }
-}  
+}
 
   @media screen and (max-width: 380px) {
 	.options {

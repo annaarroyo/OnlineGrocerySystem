@@ -6,20 +6,13 @@ import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 import Shop from "./components/Pages/Shop";
 import Profile from "./components/Pages/Profile";
-import Cart from "./components/Pages/Cart";
-
+import Cart from "./components/Pages/Cart"
+import {DataProvider} from './components/Context'
 
 class App extends Component {
-  state = {
+state = {
     data: null
   };
-
-  constructor(props) {
-    super(props)
-        this.state = {
-            cart: []
-        }
-  }
 
   componentDidMount() {
       // Call our fetch function below once the component mounts
@@ -41,11 +34,11 @@ class App extends Component {
   render() {
     return (
       <>
-
+        <DataProvider>
             <Router>
               <NavBar />
 
-              <div className="pages">
+              <div className="Pages">
                 <Switch>
                   <Route exact path="/"> <Home/> </Route>
                   <Route exact path="/login"> <Login /> </Route>
@@ -55,7 +48,8 @@ class App extends Component {
                 </Switch>
               </div>
             </Router>
-      </>
+        </DataProvider>
+          </>
     );
   }
 }

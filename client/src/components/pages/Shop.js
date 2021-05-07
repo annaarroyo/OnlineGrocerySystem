@@ -3,17 +3,31 @@ import CartImg from '../resources/shopping-cart-solid.svg';
 import '../css/Main.css';
 import {Link} from 'react-router-dom'
 import {DataContext} from '../Context'
+//<p>{product.description}</p> 60
 
 export class Shop extends Component {
 
     static contextType = DataContext;
 
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+          items: {}
+        }
+      };
 
+    async componentDidMount(){
+      await fetch("/search")
+        .then(res => res.json())
+        .then(food => this.setState({food}));
+
+    };
+
+    render() {
         const {products, addCart} = this.context;
         return (
-            <>
-                <div>
+          <>
+              <div>
                     <nav className="navbar">
                         <div className="nav-container">
                             <i className="nav-delivery">
@@ -53,7 +67,7 @@ export class Shop extends Component {
                                             {product.title}
                                         </h5>
                                         <span>${product.price}</span>
-                                        <p>{product.description}</p>
+
                                         <button onClick={()=> addCart(product._id)}>Add to cart</button>
                                     </div>
                                 </div>
@@ -61,7 +75,7 @@ export class Shop extends Component {
                         }
                     </div>
                 </div>
-            </>
+                </>
         )
     }
 }

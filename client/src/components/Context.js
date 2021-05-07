@@ -121,9 +121,9 @@ export class DataProvider extends Component {
         this.setState({
             cart: []
         });
-        
+
         this.setState({
-            total: 0 
+            total: 0
         });
         /*const dataCart = JSON.parse(localStorage.getItem('dataCart'));
         if(dataCart !== null){
@@ -137,8 +137,8 @@ export class DataProvider extends Component {
 
     /*setProducts = () => {
         console.log("hello from set products");
-        
-        
+
+
         this.callBackendAPI()
             .then(res => {
                 var result = [];
@@ -147,9 +147,9 @@ export class DataProvider extends Component {
                 }
                 this.setState({ products: result });}
                 )
-            
-            .catch(err => console.log(err));  
-        
+
+            .catch(err => console.log(err));
+
         console.log("goodbye from set products");
     };
 
@@ -157,7 +157,7 @@ export class DataProvider extends Component {
         console.log("hello from callback");
         const response = await fetch('/products');
         const body = await response.json();
-    
+
         if (response.status !== 200) {
           throw Error(body.message)
         }
@@ -177,6 +177,7 @@ export class DataProvider extends Component {
             this.setState({cart: [...cart,...data]})
         }else{
             alert("The product has been added to cart.")
+            
         }
     };
 
@@ -233,8 +234,7 @@ export class DataProvider extends Component {
                 value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal, setProducts}}>
                 {this.props.children}
             </DataContext.Provider>
-            
+
         )
     };
 }
-

@@ -1,43 +1,52 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
+import {DataContext} from '../Context'
+import {Link} from 'react-router-dom'
 import '../css/Main.css';
 
-class Cart extends Component {
+export class Cart extends Component {
+    static contextType = DataContext;
+
+    componentDidMount(){
+        this.context.getTotal();
+    }
+
     render() {
-        if(this.props.items == null) {
-            return <div id = "grocery-cart">
-                <p>Cart is empty</p>
-            </div>
-        }
-        else {
+        const {cart,increase,reduction,removeProduct,total} = this.context;
+        if(cart.length === 0){
+            return <h2 style={{textAlign:"center"}}>Cart is empty</h2>
+        }else{
             return (
                 <>
-                    <nav>
-                        <div id = "grocery-cart">
+                    <div>
+                    {
+                        cart.map(item =>(
+                            <div className="details" key={item._id}>
+                                <img src={item.src} alt=""/>
+                                <div className="box">
+                                    <div className="row">
+                                        <h2>{item.title}</h2>
+                                        <span>${item.price * item.count}</span>
+                                    </div>
+                                    <p>{item.description}</p>
+                                    <p>{item.content}</p>
+                                    <div className="amount">
+                                        <button className="count" onClick={() => reduction(item._id)}> - </button>
+                                        <span>{item.count}</span>
+                                        <button className="count" onClick={() => increase(item._id)}> + </button>
+                                    </div>
+                                </div>
+                                <div className="delete" onClick={() => removeProduct(item._id)}>X</div>
+                            </div>
+                        ))
+                    }
+                    </div>
 
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th></th>
-                                        <th>Item Name</th>
-                                        <th>Item Price</th>
-                                    </tr>
-                                    {this.props.items.map((item, index) => {
-                                        return <tr id = {index}>
-                                            <td>
-                                                <button>
-                                                    Add to cart
-                                                </button>
-                                            </td>
-                                            <td>{item.name}</td>
-                                            <td>{item.price}</td>
-                                        </tr>
-                                    })}
-                                </tbody>
-                            </table>
-                        </div>
-                    </nav>
+                    <div className="total">
+                        <Link to="/payment">Payment</Link>
+                        <h3>Total: ${total}</h3>
+                    </div>
                 </>
-            );
+            )
         }
     }
 }
