@@ -157,17 +157,17 @@ export class DataProvider extends Component {
             this.setState({cart: [...cart,...data]})
         }else{
             alert("The product has been added to cart.")
-            
+
         }
     };
 
     reduction = id =>{
         const { cart } = this.state;
-        cart.forEach(item =>{
-            if(item._id === id){
-                item.count === 1 ? item.count = 1 : item.count -=1;
-            }
-        })
+        for( var i = 0; i < cart.length; i++){
+          if(cart[i]._id === id){
+            cart[i].count === 1 ? this.removeProduct(id) : cart[i].count -=1;
+          }
+        }
         this.setState({cart: cart});
         this.getTotal();
     };
@@ -200,7 +200,7 @@ export class DataProvider extends Component {
     getTotal = ()=>{
         const{cart} = this.state;
         const res = cart.reduce((prev, item) => {
-            return prev + (item.price * item.count);
+            return Number(prev + (item.price * item.count)).toFixed(2);
         },0)
         this.setState({total: res})
     };

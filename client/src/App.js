@@ -11,7 +11,7 @@ import {DataProvider} from './components/Context'
 
 class App extends Component {
 state = {
-    data: null
+    data: null,
   };
 
   componentDidMount() {
@@ -36,9 +36,9 @@ state = {
       <>
         <DataProvider>
             <Router>
-              <NavBar />
+            <NavBar isLoggedIn = {this.state.isLoggedin} />
 
-              <div className="Pages">
+             <div className="Pages">
                 <Switch>
                   <Route exact path="/"> <Home/> </Route>
                   <Route exact path="/login"> <Login /> </Route>

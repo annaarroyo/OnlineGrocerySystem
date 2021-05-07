@@ -9,19 +9,20 @@ export class Shop extends Component {
 
     static contextType = DataContext;
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          items: {}
-        }
-      };
-
-    async componentDidMount(){
-      await fetch("/search")
-        .then(res => res.json())
-        .then(food => this.setState({food}));
-
-    };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       items: {}
+    //     }
+    //   };
+    //
+    // async componentDidMount(){
+    //   await fetch("/search")
+    //     .then(res => res.json())
+    //     .then(food => this.setState({food}));
+    //
+    //     console.log(this.state.items);
+    // };
 
     render() {
         const {products, addCart} = this.context;
