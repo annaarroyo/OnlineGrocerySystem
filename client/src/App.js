@@ -8,12 +8,14 @@ import Profile from "./components/pages/Profile";
 import Cart from "./components/pages/Cart"
 import Checkout from "./components/pages/Checkout"
 import Success from "./components/pages/Success"
+import UserProfile from './components/UserProfile';
 import {DataProvider} from './components/Context'
 import './components/css/Main.css';
 
 class App extends Component {
   state = {
     data: null,
+    session: UserProfile.getSession()
   };
 
   // componentDidMount() {
@@ -32,6 +34,7 @@ class App extends Component {
   //   }
   //   return body;
   // };
+  
 
   render() {
     return (
@@ -43,9 +46,9 @@ class App extends Component {
              <div className="Pages">
                 <Switch>
                   <Route exact path="/"> <Home/> </Route>
-                  <Route exact path="/login"> <Login /> </Route>
                   <Route exact path="/search"> <Shop /> </Route>
                   <Route exact path="/profile"> <Profile /> </Route>
+                  <Route exact path="/login"> <Login /> </Route>
                   <Route exact path="/cart"> <Cart /> </Route>
                   <Route exact path="/checkout"> <Checkout /> </Route>
                   <Route exact path="/success"> <Success /> </Route>

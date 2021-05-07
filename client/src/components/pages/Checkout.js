@@ -30,7 +30,7 @@ class Checkout extends Component {
     renderRedirect(){
         if (this.state.redirect) {
             return <Redirect to='/success'/>
-          }    
+          }
     }
 
 
@@ -78,7 +78,7 @@ class Checkout extends Component {
                                     <Form.Label>State</Form.Label>
                                     <Form.Control type="text" placeholder="TX"></Form.Control>
                                 </Form.Group>
-                                
+
                             </Card>
                         </Col >
                         <Col>
@@ -88,30 +88,30 @@ class Checkout extends Component {
                             <Card>
                                 {
                                     cart.map(item =>(
-                                  
-                                        
-                                     
-                                        <div className="details" key={item._id}>      
-                                            <img src={item.src} alt=""/>            
+
+
+
+                                        <div className="details" key={item._id}>
+                                            <img src={item.src} alt=""/>
                                             <div className="row">
                                                 <h2>{item.title}</h2>
-                                                <span>${item.price * item.count}</span>
+                                                <span>${Number(item.price * item.count).toFixed(2)}</span>
                                             </div>
                                             <p>{item.content}</p>
-                                            <div className="amount"></div>                                    
+                                            <div className="amount"></div>
                                       </div>
-                                
+
                                     ))
                             }
-                            <h3>Total: ${total}</h3>
+                            <h3>Total: ${Number(total).toFixed(2)}</h3>
                             </Card>
                         </Col>
                     </Row>
                     <Row>
                         <h4>
                         Payment
-                        </h4>                 
-                        <Col>                                        
+                        </h4>
+                        <Col>
                             <Form.Group controlId="formCardName">
                                 <Form.Label>Name on card</Form.Label>
                                 <Form.Control type="text" ></Form.Control>
@@ -119,7 +119,7 @@ class Checkout extends Component {
                             <Form.Group controlId="formCardExp">
                                 <Form.Label>Card Expiration</Form.Label>
                                 <Form.Control type="text"></Form.Control>
-                            </Form.Group>     
+                            </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group controlId="formCardNumber">
@@ -130,18 +130,18 @@ class Checkout extends Component {
                                 <Form.Label>CVV</Form.Label>
                                 <Form.Control type="text" ></Form.Control>
                             </Form.Group>
-                        </Col>  
-                                            
+                        </Col>
+
                     </Row>
                     <br></br>
-              
+
                     <button className='btn-submit-form' type='submit' onClick={ e => this.handleOrder(e) }>
 					    Submit order!
 				    </button>
-                </Container>           
-                <Container> </Container>      
+                </Container>
+                <Container> </Container>
                </body>
-              
+
             </div>
 
         );

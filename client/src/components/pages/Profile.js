@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Redirect } from 'react-router-dom';
 import UserProfile from '../UserProfile';
 
 class Profile extends Component {
@@ -6,6 +7,7 @@ class Profile extends Component {
     loading: true,
     person: null,
     email: UserProfile.getName(),
+    session: UserProfile.getSession()
   };
 
   async componentDidMount() {
@@ -13,9 +15,13 @@ class Profile extends Component {
     const response = await fetch(url + this.state.email);
     const data = await response.json();
     this.setState( {person: data, loading: false } );
-    console.log(this.state.email);
-
   }
+  async LogOut(event) {
+    UserProfile.setSession(false);
+  }
+  renderRedirect = () => {
+    return <Redirect to="/login"/>
+  };
   render () {
 		return (
       <>
@@ -57,6 +63,11 @@ class Profile extends Component {
                 </tr>
               </tbody>
             </table>
+            <form className='account-form'>
+              <button className='btn-submit-form' type='submit' onClick={ e => this.LogOut(e) }>
+                Log Out
+              </button>
+            </form>
           </div>
         )
       };

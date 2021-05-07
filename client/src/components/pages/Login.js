@@ -58,12 +58,13 @@ class Login extends Component {
 					this.setState({redirect: true});
 		}
 		UserProfile.setName(this.state.email);
+		UserProfile.setSession(true);
 		event.preventDefault();
 	}
  };
 
 	async handleSubmit(event) {
-
+				event.preventDefault();
 		//if the inputs are empty
 		if(this.state.email === '' || this.state.password === ''){
 			alert("Please make sure both email and password are filled out.")
@@ -82,7 +83,7 @@ class Login extends Component {
 			}
 		}
 		UserProfile.setName(this.state.email);
-		event.preventDefault();
+		UserProfile.setSession(true);
 	};
 
 	handleChange = ({ target }) => {
@@ -91,7 +92,8 @@ class Login extends Component {
 
 	renderRedirect = () => {
         if (this.state.redirect) {
-			UserProfile.setName(this.state.email);
+        	UserProfile.setSession(true);
+        	UserProfile.setName(this.state.email);
           return <Redirect to="/profile"/>
         }
     };
@@ -103,13 +105,13 @@ class Login extends Component {
 					<input id='email' name='email' type='email' placeholder='E-mail' value={this.state.email} onChange={this.handleChange} required />
 					<input id='password' name='password' type='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
 				</div>
-				{this.renderRedirect()}
 				<button
 				className='btn-submit-form'
 				type='submit'
 				onClick={e => this.handleSubmit(e)} >
 					Sign in
 				</button>
+				{this.renderRedirect()}
 			</form>
 		)
 	}
@@ -124,10 +126,10 @@ class Login extends Component {
 					<input id='password' name='password' type='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
 					<input id='phoneNumber' name='phoneNumber' type='text' placeholder='Phone Number' value={this.state.phoneNumber} onChange={this.handleChange} required/>
 				</div>
-				{this.renderRedirect()}
 				<button className='btn-submit-form' type='submit' onClick={ e => this.handleSubmitSignUp(e) }>
 					Sign up
 				</button>
+				{this.renderRedirect()}
 			</form>
 		)
 	}

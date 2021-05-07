@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import '../css/Main.css';
 import Logo from '../resources/favicon.ico';
+import UserProfile from '../UserProfile';
+import '../css/Main.css';
 
 function NavBar() {
   const [click, setClick] = useState(false);
-
+  const session = UserProfile.getSession();
+  console.log(session);
   const handleClick = () => setClick(!click);
   return (
     <>
@@ -52,17 +54,31 @@ function NavBar() {
                 Cart
               </NavLink>
             </li>
-            <li className="nav-item">
+            {session ? (
+              <li className="nav-item">
               <NavLink
                 exact
-                to="/login"
+                to="/profile"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
-              Login
+              Profile
               </NavLink>
-            </li>
+              </li>
+              ):(
+              <li className="nav-item">
+                <NavLink
+                  exact
+                  to="/login"
+                  activeClassName="active"
+                  className="nav-links"
+                  onClick={handleClick}
+                >
+                Login
+                </NavLink>
+              </li>
+              )};
           </ul>
           <div className="nav-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
