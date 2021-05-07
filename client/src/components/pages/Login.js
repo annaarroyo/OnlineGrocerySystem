@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { Redirect } from 'react-router-dom';
+import UserProfile from '../UserProfile';
 import '../css/Main.css';
 
 class Login extends Component {
@@ -26,7 +27,6 @@ class Login extends Component {
 *
 */
 	async handleSubmitSignUp(event){
-		event.preventDefault();
 
 	if(this.state.email.trim() === '' || this.state.password.trim() === '' || this.state.firstName.trim() === '' || this.state.lastName.trim() === '' || this.state.phoneNumber.trim() === '' ){
 		alert("Please make sure all the fields are filled.")
@@ -57,11 +57,12 @@ class Login extends Component {
 					.then(body => console.log(body));
 					this.setState({redirect: true});
 		}
+		UserProfile.setName(this.state.email);
+		event.preventDefault();
 	}
  };
 
 	async handleSubmit(event) {
-		event.preventDefault();
 
 		//if the inputs are empty
 		if(this.state.email === '' || this.state.password === ''){
@@ -80,6 +81,8 @@ class Login extends Component {
 				this.setState({redirect: true});
 			}
 		}
+		UserProfile.setName(this.state.email);
+		event.preventDefault();
 	};
 
 	handleChange = ({ target }) => {
@@ -88,6 +91,7 @@ class Login extends Component {
 
 	renderRedirect = () => {
         if (this.state.redirect) {
+			UserProfile.setName(this.state.email);
           return <Redirect to="/profile"/>
         }
     };
