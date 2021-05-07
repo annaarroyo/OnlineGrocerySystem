@@ -200,7 +200,7 @@ export class DataProvider extends Component {
     getTotal = ()=>{
         const{cart} = this.state;
         const res = cart.reduce((prev, item) => {
-            return Number(prev + (item.price * item.count)).toFixed(2);
+            return prev + item.price * item.count;
         },0)
         this.setState({total: res})
     };
