@@ -43,7 +43,7 @@ module.exports = {
 	},
   saveAccount: (req, res) => {
         console.log("Saving new credentials...");
-    
+
         const errors = validationResult(req);
         if(!errors.isEmpty()){
           return res.status(400).jsonp(errors.array().map(error => {
@@ -78,16 +78,12 @@ module.exports = {
           }));
       }
 
-      colItems.findOne({ name: 'Banana' }).then((creds) => {
-          const response = creds;
-          console.log("Product found:");
-          console.log(JSON.stringify(response));
-          return res.status(200).send(JSON.stringify(response));
+      colItems.find().toArray().then((food) => {
+          return res.status(200).send(JSON.stringify(food));
       }).catch((error) => {
           const response = { message: error.message };
           console.error(response);
           return res.status(404).send(JSON.stringify(response));
       })
-},
-
+    }
 };

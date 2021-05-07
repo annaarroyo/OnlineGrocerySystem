@@ -12,7 +12,7 @@ function NavBar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            Grocery Delivery System 
+            Grocery Delivery System
             <i className="nav-logo">
                 <img src={Logo} alt=""/>
             </i>

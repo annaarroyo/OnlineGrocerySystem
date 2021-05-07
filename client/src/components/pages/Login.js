@@ -4,8 +4,8 @@ import '../css/Main.css';
 
 class Login extends Component {
 
-	constructor() {
-        super();
+	constructor(props) {
+        super(props);
 		this.option = 1;
         this.state = {
             redirect: false,
@@ -25,8 +25,8 @@ class Login extends Component {
 * If user chooses to sign up => check to see if the credentials is existed, and save all the information to db
 *
 */
- async handleSubmitSignUp(event){
-	event.preventDefault();
+	async handleSubmitSignUp(event){
+		event.preventDefault();
 
 	if(this.state.email.trim() === '' || this.state.password.trim() === '' || this.state.firstName.trim() === '' || this.state.lastName.trim() === '' || this.state.phoneNumber.trim() === '' ){
 		alert("Please make sure all the fields are filled.")
@@ -88,7 +88,7 @@ class Login extends Component {
 
 	renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to='/profile'/>
+          return <Redirect to="/profile"/>
         }
     };
 

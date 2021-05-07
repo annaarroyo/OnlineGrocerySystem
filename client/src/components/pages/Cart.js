@@ -25,7 +25,7 @@ export class Cart extends Component {
                                 <div className="box">
                                     <div className="row">
                                         <h2>{item.title}</h2>
-                                        <span>${item.price * item.count}</span>
+                                        <span>${Number(item.price * item.count).toFixed(2)}</span>
                                     </div>
                                     <p>{item.description}</p>
                                     <p>{item.content}</p>
@@ -35,7 +35,7 @@ export class Cart extends Component {
                                         <button className="count" onClick={() => increase(item._id)}> + </button>
                                     </div>
                                 </div>
-                                <div className="delete" onClick={() => removeProduct(item._id)}>X</div>
+                                <button className="delete" onClick={() => removeProduct(item._id)}>X</button>
                             </div>
                         ))
                     }
@@ -51,4 +51,4 @@ export class Cart extends Component {
     }
 }
 
-export default Cart
+export default Cart;

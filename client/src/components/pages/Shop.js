@@ -9,27 +9,26 @@ export class Shop extends Component {
 
     static contextType = DataContext;
 
-    /*constructor(props) {
-        super();
-        this.state = {
-          loading: 'true'
-        };
-    
-      }
-
-    componentDidMount = async() => {
-        console.log("hello from did mount");
-        const res = await this.context.setProducts();
-        this.setState({loading: 'done'});
-        console.log("goodbye from did mount");
-
-    };*/
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       items: {}
+    //     }
+    //   };
+    //
+    // async componentDidMount(){
+    //   await fetch("/search")
+    //     .then(res => res.json())
+    //     .then(food => this.setState({food}));
+    //
+    //     console.log(this.state.items);
+    // };
 
     render() {
         const {products, addCart} = this.context;
         return (
-            <>
-                <div>
+          <>
+              <div>
                     <nav className="navbar">
                         <div className="nav-container">
                             <i className="nav-delivery">
@@ -69,7 +68,7 @@ export class Shop extends Component {
                                             {product.title}
                                         </h5>
                                         <span>${product.price}</span>
-                                        
+
                                         <button onClick={()=> addCart(product._id)}>Add to cart</button>
                                     </div>
                                 </div>
@@ -77,7 +76,7 @@ export class Shop extends Component {
                         }
                     </div>
                 </div>
-            </>
+                </>
         )
     }
 }
