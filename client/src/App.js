@@ -1,4 +1,3 @@
-import './components/css/Main.css';
 import React, { Component } from 'react';
 import NavBar from "./components/pages/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,28 +9,29 @@ import Cart from "./components/pages/Cart"
 import Checkout from "./components/pages/Checkout"
 import Success from "./components/pages/Success"
 import {DataProvider} from './components/Context'
+import './components/css/Main.css';
 
 class App extends Component {
-state = {
+  state = {
     data: null,
   };
 
-  componentDidMount() {
-      // Call our fetch function below once the component mounts
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
-  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-  callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
+  // componentDidMount() {
+  //     // Call our fetch function below once the component mounts
+  //   this.callBackendAPI()
+  //     .then(res => this.setState({ data: res.express }))
+  //     .catch(err => console.log(err));
+  // }
+  // // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+  // callBackendAPI = async () => {
+  //   const response = await fetch('/express_backend');
+  //   const body = await response.json();
 
-    if (response.status !== 200) {
-      throw Error(body.message)
-    }
-    return body;
-  };
+  //   if (response.status !== 200) {
+  //     throw Error(body.message)
+  //   }
+  //   return body;
+  // };
 
   render() {
     return (
@@ -53,7 +53,7 @@ state = {
               </div>
             </Router>
         </DataProvider>
-          </>
+      </>
     );
   }
 }

@@ -22,10 +22,10 @@ h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
 h1{
-    font-size: 6rem;
+    font-size: 6.5rem;
 }
 h2{
-    font-size: 5rem;
+    font-size: 6rem;
     font-weight: 600;
 }
 h3{
@@ -43,8 +43,8 @@ h6{
 }
 
 section{
-    box-shadow: 0 0 5px #ccc;
-    padding: 15px 10px;
+  box-shadow: 0 0 5px #ccc;
+  padding: 15px 10px;
 }
 
 /* ------------------------- Navbar ------------------------ */
@@ -147,7 +147,7 @@ section{
 
 /* ------------------------- Home ------------------------ */
 #home{
-    width: 75%;
+    width: 80%;
     max-width: 1500px;
     margin: 5% auto;
 }
@@ -324,71 +324,6 @@ section{
 }
 
 
-/* ------------------------- Responsive ------------------------ */
-
-@media screen and (max-width: 960px) {
-    .nav-menu {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      border-top: 1px solid #fff;
-      position: absolute;
-      top: 80px;
-      left: -110%;
-      opacity: 1;
-      transition: all 0.5s ease;
-    }
-
-    .nav-menu.active {
-      background: #2699FB;
-      left: 0px;
-      opacity: 1;
-      transition: all 0.5s ease;
-      z-index: 1;
-    }
-    .nav-item .active {
-      color: #fff;
-      border: none;
-    }
-    .nav-links {
-      padding: 1.5rem;
-      width: 100%;
-      display: table;
-    }
-
-    .nav-icon {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translate(-100%, 60%);
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #fff;
-    }
-  }
-
-@media screen and (max-width: 768px) {
-  .profile .container{
-    width: 100%;
-  }
-  .profile table, .profile table tr,   .profile table td,   .profile table th {
-    display: table;
-    margin: 0 !important;
-    width:100% !important;
-    border: none !important;
-  }
-  .profile table td.left, .profile table td.right {
-    padding: 5% 0 !important;
-    /* border-bottom: 1px solid grey !important; */
-  }
-}
-
-  @media screen and (max-width: 380px) {
-	.options {
-		width: 100%;
-	}
-}
 /* ------------------------- Product ------------------------ */
 #product{
     font-family: sans-serif;
@@ -403,20 +338,21 @@ section{
     border: 1px solid #eee;
     /*overflow: hidden;*/
     padding: 30px;
-    box-shadow: 2px 8px 20px #ddd;
-    margin: 10px;
+    box-shadow: none;
     transition: 0.5s linear;
+    margin: 0.5%;
 }
 .card:hover{
-    box-shadow: none;
+    box-shadow: 2px 8px 20px #ddd;
+    transition: 0.5s linear;
 }
 .card img{
     max-width: 300px;
     width: 100%;
-    height: 100%;
-    max-height: 300px;
+    /*height: 100%;*/
+    /*max-height: 300px;*/
     display: block;
-    object-fit: cover;
+    /*object-fit: cover;*/
 }
 .card h3{
     text-transform: uppercase;
@@ -447,6 +383,14 @@ section{
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 15px 0;
+}
+.card button:hover{
+  background-color: #2699FB;
+  transition: 0.5s linear;
+}
+.cardSpacer{
+  min-height: 305px;
+  border: 1px solid #eee;
 }
 /* ------------------------- Cart ------------------------ */
 section .cart{
@@ -583,5 +527,81 @@ section .cart{
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* ------------------------- Responsive ------------------------ */
+
+@media screen and (max-width: 960px) {
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-top: 1px solid #fff;
+      position: absolute;
+      top: 80px;
+      left: -110%;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
+
+    .nav-menu.active {
+      background: #2699FB;
+      left: 0px;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+    }
+    .nav-item .active {
+      color: #fff;
+      border: none;
+    }
+    .nav-links {
+      padding: 1.5rem;
+      width: 100%;
+      display: table;
+    }
+
+    .nav-icon {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-100%, 60%);
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #fff;
+    }
+  }
+
+@media screen and (max-width: 768px) {
+  .profile .container{
+    width: 100%;
+  }
+  .profile table, .profile table tr,   .profile table td,   .profile table th {
+    display: table;
+    margin: 0 !important;
+    width:100% !important;
+    border: none !important;
+  }
+  .profile table td.left, .profile table td.right {
+    padding: 5% 0 !important;
+    /* border-bottom: 1px solid grey !important; */
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .navbar{
+    min-height: 150px;
+  }
+  .nav-menu{
+    top: 150px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .options {
+    width: 100%;
   }
 }
