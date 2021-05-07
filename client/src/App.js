@@ -1,12 +1,14 @@
 import './components/css/Main.css';
 import React, { Component } from 'react';
-import NavBar from "./components/Pages/NavBar";
+import NavBar from "./components/pages/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/Pages/Home";
-import Login from "./components/Pages/Login";
-import Shop from "./components/Pages/Shop";
-import Profile from "./components/Pages/Profile";
-import Cart from "./components/Pages/Cart"
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Login";
+import Shop from "./components/pages/Shop";
+import Profile from "./components/pages/Profile";
+import Cart from "./components/pages/Cart"
+import Checkout from "./components/pages/Checkout"
+import Success from "./components/pages/Success"
 import {DataProvider} from './components/Context'
 
 class App extends Component {
@@ -45,6 +47,8 @@ state = {
                   <Route exact path="/search"> <Shop /> </Route>
                   <Route exact path="/profile"> <Profile /> </Route>
                   <Route exact path="/cart"> <Cart /> </Route>
+                  <Route exact path="/checkout"> <Checkout /> </Route>
+                  <Route exact path="/success"> <Success /> </Route>
                 </Switch>
               </div>
             </Router>
