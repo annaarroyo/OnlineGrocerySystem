@@ -61,7 +61,9 @@ export class Shop extends Component {
                             products.map(product =>(
                                 <div className="card" key={product._id}>
                                     <Link to={`/product/${product._id}`}>
-                                        <img src={product.src} alt=""/>
+                                        <div className="cardSpacer" >
+                                            <img src={product.src} alt=""/>
+                                        </div>
                                     </Link>
                                     <div className="content">
                                         <h5>
